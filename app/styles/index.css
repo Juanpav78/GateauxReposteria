@@ -69,7 +69,7 @@
   /* HEADER CSS */
 
 .header{
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.767), rgba(0, 0, 0, 0.795)),  url('../../public/img/bg_pasteleria.jpg');
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.767), rgba(0, 0, 0, 0.795)),  url('../img/bg_pasteleria.jpg');
   padding: 4.4rem 0;
   background-size: cover;
   background-position: center;

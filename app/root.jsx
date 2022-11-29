@@ -9,11 +9,9 @@ import {
 } from '@remix-run/react'
 
 import styles from '~/styles/index.css'
-import Header from '~/components/header'
-import Footer from './components/footer'
-import favicon from '../public/PanaderiaIco.ico'
-
-
+import Header from '/components/header'
+import Footer from '/components/footer'
+import favicon from '~/img/PanaderiaIco.ico'
 
 
 export function meta(){
