@@ -1,5 +1,6 @@
 import {useLoaderData, Link} from '@remix-run/react'
-import {getResposterias, getBlogs, getCurso} from '~/models/pasteles.server'
+import {getResposterias, getImage} from '~/models/pasteles.server'
+
 import ListadoReposteria from '~/components/listadoReposteria.jsx'
 
 import stylesCurso from "~/styles/curso.css"
@@ -32,22 +33,17 @@ export function links(){
 }
 
 export async function loader(){
-  const [ reposterias , blogs, curso ] = await Promise.all([
-    getResposterias(),
-    getBlogs(),
-    getCurso()
-  ])
-
-  return {
-    reposterias: reposterias.data,
-    blogs: blogs.data,
-    curso: curso.data
-  }
-
-
+  const reposterias = await getResposterias("pasteles");
+  const img = await getImage();
+  return [{ 
+    reposterias : reposterias.rows,
+    img : img
+  
+  }]
 }
 const Index = () => {
-  const {reposterias, blogs, curso} = useLoaderData()
+  
+  const [{reposterias, img}] = useLoaderData()
   return (
     <>
         <section className='contenedor'>
@@ -55,27 +51,29 @@ const Index = () => {
         </section>
 
         <main >
-        <ListadoReposteria 
+       <ListadoReposteria 
         reposterias = {reposterias}
         limit= {3}
-        />
+        img={img}
+        /> 
 
         <Link to="/pasteles" className='btnVer'>Ver todos nuestros productos</Link>
         </main>
 
         <section>
-          <Curso 
+{/*           <Curso 
           curso ={curso}
-          />
+          /> */}
         </section>
 
         <section className='contenedor'>
-          <ListadoBlogs 
+{/*           <ListadoBlogs 
            blogs = { blogs}
            limit= {4}
-          />
+          /> */}
           <Link to="/pasteles" className='btnVer'>Ver nuestros blogs</Link>
         </section>
+
     </>
   )
 }

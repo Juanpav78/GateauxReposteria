@@ -1,6 +1,32 @@
-export async function getResposterias(){
-    const respuesta = await fetch(`${process.env.API_URL}/pasteles?populate=imagen`)
-    const res = await respuesta.json()
+const { Client } = require('pg');
+
+const connectionData ={
+    user: "root",
+    host: "dpg-cdvlrg82i3mkucb64dlg-a.oregon-postgres.render.com",
+    database: "gateauxpasteleria",
+    password: "FEkv5CTTKuACODLeJpC8qGRlNIidfx0v",
+    port: 5432,
+    ssl: {
+        rejectUnauthorized: false,
+    }
+}
+
+
+async function ConectarDB(bd){
+    const client = new Client(connectionData);
+    await client.connect()
+    const respuesta = await client.query(`SELECT * FROM ${bd}`);
+    await client.end()
+    return respuesta
+}
+
+export async function getResposterias(bd){
+    const res= await ConectarDB(bd);
+    return res;
+}
+
+export async function getImage(){
+    const res= await ConectarDB("files");
     return res;
 }
 

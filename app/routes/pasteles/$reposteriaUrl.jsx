@@ -5,7 +5,7 @@ import BtnVolver from "../../components/btnVolver"
 
 export async function loader({params}){
   const {reposteriaUrl} = params
-  const pastel = await getResposteria(reposteriaUrl)
+  const pastel = await getResposteria("pasteles" , reposteriaUrl)
 
   if(pastel.data.length === 0){
     throw new Response('', {

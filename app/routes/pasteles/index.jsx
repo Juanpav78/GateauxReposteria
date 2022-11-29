@@ -1,11 +1,16 @@
-import { getResposterias } from "~/models/pasteles.server" 
+import { getResposterias, getImage } from "~/models/pasteles.server" 
 import { useLoaderData } from "@remix-run/react"
 import ListadoReposteria from "~/components/listadoReposteria"
 
 
 export async function loader(){
-  const reposteria = await getResposterias()
-  return reposteria.data
+  const reposterias = await getResposterias("pasteles");
+  const img = await getImage();
+  return [{ 
+    reposterias : reposterias.rows,
+    img : img
+  
+  }]
 }
 
 export function meta(){
@@ -18,11 +23,12 @@ export function meta(){
 
 
 const Tienda = () => {
-  const reposterias = useLoaderData()
+  const [{reposterias, img}] = useLoaderData()
   return (
-        <ListadoReposteria 
-        reposterias = {reposterias}
-        />
+    <ListadoReposteria 
+    reposterias = {reposterias}
+    img={img}
+    /> 
   )
 }
 
