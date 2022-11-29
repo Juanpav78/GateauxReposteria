@@ -1,12 +1,13 @@
 import Post from "~/components/post.jsx"
 let limite;
-function cc(blogs, i){
+function cc(blogs, i, img){
 
   if( i < limite){
     return (
       <Post 
-        blogs = {blogs?.attributes}
-        key = {blogs?.attributes.url}
+        blogs = {blogs}
+        img = {img.rows[i].formats.medium.url}
+        key = {blogs.id}
       />
     )
   }else{
@@ -14,7 +15,7 @@ function cc(blogs, i){
   }
 }
 
-const listadoBlogs = ({blogs, limit=blogs?.length}) => {
+const listadoBlogs = ({blogs, img, limit=blogs?.length}) => {
   limite = limit
   return (
     <>
@@ -22,7 +23,7 @@ const listadoBlogs = ({blogs, limit=blogs?.length}) => {
         <div className="blog">
           {blogs?.length > 0 ? (
             blogs.map( (blogs, i) => (
-                cc(blogs, i)
+                cc(blogs, i, img)
             )
             )
           ) : (

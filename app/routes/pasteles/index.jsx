@@ -1,10 +1,10 @@
-import { getResposterias, getImage } from "~/models/pasteles.server" 
+import { getInfo, getImage } from "~/models/pasteles.server" 
 import { useLoaderData } from "@remix-run/react"
 import ListadoReposteria from "~/components/listadoReposteria"
 
 
 export async function loader(){
-  const reposterias = await getResposterias("pasteles");
+  const reposterias = await getInfo("pasteles");
   const img = await getImage();
   return [{ 
     reposterias : reposterias.rows,

@@ -6,7 +6,7 @@ import { formatearFecha } from "~/utils/utilidades"
 
 export async function loader({params}){
     const {blogUrl} = params
-    const blog = await getBlog(blogUrl)
+    const blog = await getInfo(blogUrl)
     if(blog.data.length === 0){
         throw new Response('', {
           status: 404,

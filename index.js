@@ -19,11 +19,11 @@ async function ConectarDB_Pasteles(){
     return res.rows
 }
 
-async function getResposterias(){
+async function getInfo(){
     const respuesta = await ConectarDB_Pasteles();
     const res = respuesta[0].id
     console.log(res)
     return res;
 }
 
-getResposterias()
+getInfo()

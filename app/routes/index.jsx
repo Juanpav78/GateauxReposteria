@@ -1,5 +1,5 @@
 import {useLoaderData, Link} from '@remix-run/react'
-import {getResposterias, getImage} from '~/models/pasteles.server'
+import {getInfo, getImage} from '~/models/pasteles.server'
 
 import ListadoReposteria from '~/components/listadoReposteria.jsx'
 
@@ -33,17 +33,19 @@ export function links(){
 }
 
 export async function loader(){
-  const reposterias = await getResposterias("pasteles");
+  const reposterias = await getInfo("pasteles");
+  const blogs = await getInfo("blogs");
   const img = await getImage();
   return [{ 
     reposterias : reposterias.rows,
-    img : img
+    img : img,
+    blogs : blogs.rows,
   
   }]
 }
 const Index = () => {
   
-  const [{reposterias, img}] = useLoaderData()
+  const [{reposterias, img, blogs}] = useLoaderData()
   return (
     <>
         <section className='contenedor'>
@@ -67,10 +69,11 @@ const Index = () => {
         </section>
 
         <section className='contenedor'>
-{/*           <ListadoBlogs 
+          <ListadoBlogs 
            blogs = { blogs}
            limit= {4}
-          /> */}
+           img={img}
+          />
           <Link to="/pasteles" className='btnVer'>Ver nuestros blogs</Link>
         </section>
 

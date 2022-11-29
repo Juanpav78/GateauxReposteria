@@ -8,7 +8,7 @@ function cc(reposterias, i, img){
     return (
       <Menu 
           reposteria={reposterias}
-          img = {img.rows[reposterias.id-1].formats.medium.url}
+          img = {img.rows[i].formats.medium.url}
           key={reposterias.id}
       />
     )
