@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@remix-run/react"
-import Logo from "../../public/img/Logo.svg"
+import Logo from "../img/Logo.svg"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faSquareFacebook, faSquareInstagram, faSquareTwitter } from "@fortawesome/free-brands-svg-icons";
 const footer = () => {

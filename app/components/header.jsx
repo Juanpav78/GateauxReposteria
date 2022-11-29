@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@remix-run/react"
-import Logo from "../../public/img/Logo.svg"
+import Logo from "../img/Logo.svg"
 
 const Header = () => {
     const location= useLocation();
