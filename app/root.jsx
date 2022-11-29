@@ -1,4 +1,4 @@
-import style from '~/styles/main'
+import style from './styles/main'
 
 const {
   Links,
