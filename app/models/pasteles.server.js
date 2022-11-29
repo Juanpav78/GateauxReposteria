@@ -30,6 +30,22 @@ export async function getImage(){
     return res;
 }
 
+export async function getInfoUnique(bd, url){
+
+    
+    const query = bd+" WHERE url = '"+url+"'"
+    const queryImg = "files WHERE preview_url = '"+url+"'"
+    const res= await ConectarDB(query);
+    const resImg= await ConectarDB(queryImg);
+
+    return [{
+        res: res,
+        resImg : resImg
+    }];
+}
+
+
+
 export async function getResposteria(url){
     const respuesta = await fetch(`${process.env.API_URL}/pasteles?filters[url]=${url}&populate=imagen`)
     const res = await respuesta.json()

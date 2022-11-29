@@ -20,8 +20,6 @@ export function meta(){
   })
 }
 
-
-
 const Tienda = () => {
   const [{reposterias, img}] = useLoaderData()
   return (
