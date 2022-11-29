@@ -11,6 +11,20 @@
 }
 
 .inicio .btnVolver{
-    width: 50rem;
+    width: 100%;
+    max-width: 50rem;
     margin-top: 10rem;
+}
+
+@media (max-width: 768px) {
+    .inicio{
+        margin-bottom: 3rem;
+    }
+    .inicio p{
+        text-align: center;
+        font-size: 2.4rem;
+    }
+    .inicio .btnVolver{
+        margin-top: 5rem;
+    }
 }
