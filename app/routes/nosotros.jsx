@@ -1,5 +1,5 @@
 import styles from '~/styles/nosotros.css'
-import imagen from '../../public/img/img_nosotros.jpg'
+import imagen from '../img/img_nosotros.jpg'
 export function meta(){
     return({ 
         title: 'Nosotros - Gateaux',
