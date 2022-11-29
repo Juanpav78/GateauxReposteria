@@ -11,7 +11,7 @@ const {
 
 export function links(){
   return[{
-      rel: 'icon',
+      rel: 'stylesheet',
       href: style,
   }]
 }
