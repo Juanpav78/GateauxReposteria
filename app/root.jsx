@@ -1,44 +1,104 @@
-import style from './styles/main'
+import {
+    Meta,
+    Links,
+    Outlet,
+    Scripts,
+    LiveReload,
+    useCatch,
+    Link
+} from '@remix-run/react'
 
-const {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} = require("@remix-run/react");
+import styles from '~/styles/index.css'
+import Header from '~/components/header'
+import Footer from './components/footer'
+import favicon from '../public/PanaderiaIco.ico'
 
-export function links(){
-  return[{
-      rel: 'stylesheet',
-      href: style,
-  }]
+
+
+
+export function meta(){
+    return(
+        {
+            charset: 'utf-8',
+            title: 'Gateaux',
+            viewport: "width=device-width, initial-scale=1.0",
+        }
+    )
+ 
 }
 
-export const meta = () => ({
-  charset: "utf-8",
-  title: "New Remix App",
-  viewport: "width=device-width,initial-scale=1",
-});
+export function links(){
+    return[{
+        rel: 'icon',
+        href: favicon,
+    },{
+        rel: 'stylesheet',
+        href: 'https://necolas.github.io/normalize.css/8.0.1/normalize.css',
 
-export default function App() {
-  return (
-    <html lang="en">
-      <head>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <div className="class">
-        <h1>HOLA</h1>
-        </div>
+    },{
+        rel: 'stylesheet',
+        href: styles,
+    },{
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+    },{
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossOrigin : 'true',
+    },{
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Sacramento&family=Sen:wght@400;700&display=swap',
+    }]
+ 
+}
+
+export default function App(){
+    return(
+        <Document> 
+            <Outlet />  
+        </Document>
         
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
-  );
+    )
+}
+
+function Document({children}){
+    
+    return(
+        <html lang="en">
+        <head>
+            <Meta />
+            <Links />
+        </head>
+        <body>
+            <Header />
+            {children}
+            <Footer />
+            <Scripts />
+            <LiveReload />
+        </body>
+        </html>
+    )
+}
+/** Manejo de errores */
+
+export function CatchBoundary(){
+    const error = useCatch()
+
+    return(
+        <Document>
+            <p className='error error__status'>{error.status}</p>
+            <p className='error error__statusText'>{error.statusText}</p>
+            <Link className=" error__enlace" to="/">Volver a la página principal</Link>
+        </Document>
+    )
+}
+
+export function ErrorBoundary({error}){
+    return(
+        <Document>
+            <p className='error error__status'>{error.status}</p>
+            <p className='error error__statusText'>{error.statusText}</p>
+            <Link className="error__enlace" to="/">Volver a la página principal</Link>
+        </Document>
+    )
 }
