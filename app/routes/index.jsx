@@ -6,11 +6,13 @@ import ListadoReposteria from '~/components/listadoReposteria.jsx'
 import stylesCurso from "~/styles/curso.css"
 import stylesMenu from "~/styles/menu.css"
 import stylesBlogs from "~/styles/blog.css"
-import styles from "~/styles/inicio.css"
+import stylesHome from "~/styles/home.css"
+import stylesIndex from "~/styles/inicio.css"
 
 import Curso from "~/components/curso"
 import ListadoBlogs from "~/components/listadoBlogs"
 import Home from "~/components/home"
+import Inicio from "~/components/inicio"
 
 export function meta(){
 
@@ -18,6 +20,9 @@ export function meta(){
 
 export function links(){
   return[{
+    rel: 'stylesheet',
+    href: stylesHome
+  },{
     rel: 'stylesheet',
     href: stylesMenu
   },{
@@ -28,7 +33,7 @@ export function links(){
     href: stylesCurso
   },{
     rel: 'stylesheet',
-    href: styles
+    href: stylesIndex
   }]
 }
 
@@ -53,11 +58,17 @@ const Index = () => {
   const [{reposterias, img, blogs, curso}] = useLoaderData()
   return (
     <>
-        <section className='contenedor'>
+
+        <section className='inicio contenedor'>
+          <Inicio />
+        </section>
+
+
+        <section className='home'>
           <Home />
         </section>
 
-        <main >
+        <main id='productos' >
        <ListadoReposteria 
         reposterias = {reposterias}
         limit= {3}

@@ -1,0 +1,16 @@
+.inicio{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6rem;
+}
+
+.inicio p{
+    border-top: 5px solid var(--primary-D) ;
+}
+
+.inicio .btnVolver{
+    width: 50rem;
+    margin-top: 10rem;
+}

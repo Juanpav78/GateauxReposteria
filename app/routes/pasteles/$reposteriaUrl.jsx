@@ -44,7 +44,7 @@ const Reposteria = () => {
       
       <div className="informacion">
         <div className="informacion__img">
-          <img className="" src={resImg.url} alt={`Imagen Comida Reposteria Pastel ${res.nombre}`} />
+          <img className="" src={resImg.formats.small.url} alt={`Imagen Comida Reposteria Pastel ${res.nombre}`} />
         </div>
         <div className="informacion__txt">
           <h3>Detalles</h3>

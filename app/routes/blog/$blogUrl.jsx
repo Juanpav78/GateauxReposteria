@@ -36,7 +36,7 @@ const Blog = () => {
             <h2 className="heading">{res.titulo}</h2>
         </div>
         <div className="blogUrl__info">
-            <img className="blogUrl__img" src={resImg.url} alt={`Imagen Comida Reposteria Pastel ${res.titulo}`} />
+            <img className="blogUrl__img" src={resImg.formats.small.url} alt={`Imagen Comida Reposteria Pastel ${res.titulo}`} />
             <p className="blogUrl__contenido">{res.contenido}</p>
             <p className="blogUrl__publish">Publicado el: {formatearFecha(res.published_at)}</p>
         </div>
