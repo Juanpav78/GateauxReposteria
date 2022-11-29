@@ -1,3 +1,5 @@
+import style from '~/styles/main'
+
 const {
   Links,
   LiveReload,
