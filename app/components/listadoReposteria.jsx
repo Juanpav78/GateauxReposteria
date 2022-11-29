@@ -1,14 +1,21 @@
 import Menu from './menu.jsx'
-
-let contador = 0;
 let limite;
-function cc(reposterias, i, img){
+function cc(reposterias, i, img){ 
+  let imagen
+
+  for(var j=0; j < img.rows.length; j++){
+    if(img.rows[j].preview_url === reposterias.url){
+       imagen = img.rows[j].formats.small.url
+       break;
+    }
+  } 
+
 
   if( i < limite){
     return (
       <Menu 
           reposteria={reposterias}
-          img = {img.rows[i].formats.medium.url}
+          img = {imagen}
           key={reposterias.id}
       />
     )

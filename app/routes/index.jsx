@@ -1,5 +1,5 @@
 import {useLoaderData, Link} from '@remix-run/react'
-import {getInfo, getImage} from '~/models/pasteles.server'
+import {getInfo, getImage, getInfoUnique} from '~/models/pasteles.server'
 
 import ListadoReposteria from '~/components/listadoReposteria.jsx'
 
@@ -35,17 +35,22 @@ export function links(){
 export async function loader(){
   const reposterias = await getInfo("pasteles");
   const blogs = await getInfo("blogs");
+  const [{res, resImg}] = await getInfoUnique("cursos" , "cursos-de-reposteria-a-25-de-descuento");
   const img = await getImage();
   return [{ 
     reposterias : reposterias.rows,
     img : img,
     blogs : blogs.rows,
-  
+    curso:{
+      res: res.rows[0],
+      resImg : resImg.rows[0]
+    }
+    
   }]
 }
 const Index = () => {
   
-  const [{reposterias, img, blogs}] = useLoaderData()
+  const [{reposterias, img, blogs, curso}] = useLoaderData()
   return (
     <>
         <section className='contenedor'>
@@ -63,9 +68,10 @@ const Index = () => {
         </main>
 
         <section>
-{/*           <Curso 
-          curso ={curso}
-          /> */}
+        <Curso 
+          res ={curso.res}
+          resImg ={curso.resImg}
+          />
         </section>
 
         <section className='contenedor'>

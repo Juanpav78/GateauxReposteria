@@ -31,7 +31,6 @@ export async function getImage(){
 }
 
 export async function getInfoUnique(bd, url){
-
     
     const query = bd+" WHERE url = '"+url+"'"
     const queryImg = "files WHERE preview_url = '"+url+"'"

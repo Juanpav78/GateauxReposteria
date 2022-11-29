@@ -1,12 +1,22 @@
 import Post from "~/components/post.jsx"
 let limite;
-function cc(blogs, i, img){
+
+function cc(blogs, i, img){ 
+  let imagen
+
+  for(var j=0; j < img.rows.length; j++){
+    if(img.rows[j].preview_url === blogs.url){
+       imagen = img.rows[j].formats.small.url
+       break;
+    }
+  } 
+
 
   if( i < limite){
     return (
       <Post 
         blogs = {blogs}
-        img = {img.rows[i].formats.medium.url}
+        img = {imagen}
         key = {blogs.id}
       />
     )
