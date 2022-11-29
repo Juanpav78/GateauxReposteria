@@ -9,8 +9,8 @@ import {
 } from '@remix-run/react'
 
 import styles from '~/styles/index.css'
-import Header from '/components/header.jsx'
-import Footer from '/components/footer.jsx'
+import Header from './components/header.jsx'
+import Footer from './components/footer.jsx'
 import favicon from '~/img/PanaderiaIco.ico'
 
 
