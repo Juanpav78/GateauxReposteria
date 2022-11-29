@@ -1,0 +1,8 @@
+/* app/styles/nosotros.css */
+.img__nosotros {
+  background-image: url(/build/_assets/bg_panaderia-5KXFNIT3.jpg);
+  height: 20rem;
+}
+.nosotros {
+  background-color: brown;
+}

@@ -1,0 +1,25 @@
+/* app/styles/blog.css */
+.blog {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.link__blog {
+  text-decoration: none;
+}
+.blog__entrada {
+  display: flex;
+  gap: 2rem;
+}
+.blog__entrada--img {
+  flex: 3;
+}
+.blog__entrada--info {
+  flex: 2;
+}
+.resumen {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}

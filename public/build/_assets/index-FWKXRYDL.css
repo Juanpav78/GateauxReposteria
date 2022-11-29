@@ -1,0 +1,50 @@
+/* app/styles/index.css */
+:root {
+  --primary: #e99401;
+  --black: #262626;
+  --white: #FFF;
+  --fuente-principal: "Sen", sans-serif;
+  --fuente-titulo:"Fredericka the Great", cursive;
+  --fuente-resaltada:"Sacramento", cursive;
+}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-size: 2rem;
+  font-family: var(--fuente-principal);
+  line-height: 1.5;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+[class*=contenedor],
+main {
+  width: min(95%, 120rem);
+  margin: 3rem auto;
+}
+[class*=heading] {
+  font-size: 4rem;
+  text-align: center;
+  font-weight: 900;
+  color: var(--primary);
+  margin: 5rem 0;
+}
+.header {
+  background-image: url(/build/_assets/bg_pasteleria-6IXNVEFK.jpg);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, .767), rgba(0, 0, 0, .795));
+}
+.navegacion a {
+  color: #000;
+  text-decoration: none;
+}
+.navegacion a.active {
+  color: #00e927;
+}

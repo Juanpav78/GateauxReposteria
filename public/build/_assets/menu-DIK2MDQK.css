@@ -1,0 +1,10 @@
+/* app/styles/menu.css */
+.menu {
+  background-color: #7fffd4;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+.reposteria__card {
+  background-color: #54550d;
+}

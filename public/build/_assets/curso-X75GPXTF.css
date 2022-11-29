@@ -1,0 +1,19 @@
+/* app/styles/curso.css */
+.curso {
+  display: flex;
+  justify-content: flex-end;
+}
+.curso__info {
+  color: var(--white);
+  text-align: end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.curso__info .curso__info--titulo {
+  text-align: center;
+  font-family: var(--fuente-titulo);
+  font-size: 7rem;
+  max-width: 90rem;
+}

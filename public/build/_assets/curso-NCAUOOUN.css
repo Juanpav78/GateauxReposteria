@@ -1,0 +1,9 @@
+/* app/styles/curso.css */
+.curso {
+  display: flex;
+}
+.curso__info {
+  color: var(--white);
+  text-align: end;
+  width: 50rem;
+}

@@ -1,0 +1,153 @@
+/* app/styles/index.css */
+:root {
+  --primary: rgb(163, 124, 98);
+  --primary-D: rgb(58, 44, 39);
+  --black: #262626;
+  --white: #FFF;
+  --fuente-principal: "Sen", sans-serif;
+  --fuente-titulo:"Fredericka the Great", cursive;
+  --fuente-resaltada:"Sacramento", cursive;
+}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-size: 2rem;
+  font-family: var(--fuente-principal);
+  line-height: 1.5;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+[class*=contenedor],
+main {
+  width: min(95%, 120rem);
+  margin: 3rem auto;
+}
+[class*=heading] {
+  font-size: 4rem;
+  text-align: center;
+  font-weight: 900;
+  color: var(--primary);
+  margin: 5rem 0;
+}
+h1,
+h2,
+h3,
+p,
+a {
+  margin: 0;
+}
+.header {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, .767), rgba(0, 0, 0, .795)), url(/build/_assets/bg_pasteleria-6IXNVEFK.jpg);
+  padding: 4.4rem 0;
+  background-size: cover;
+  background-position: center;
+}
+.header .contenedor {
+  margin: 0 auto;
+}
+.barra {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .barra {
+    flex-direction: column;
+  }
+}
+.logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+.logo .logo__img {
+  margin: 0 auto;
+  width: 40rem;
+  filter: invert(1);
+}
+.logo .logo__txt {
+  font-family: var(--fuente-resaltada);
+  font-size: 3.6rem;
+  color: var(--white);
+  text-align: end;
+  margin-top: -1.5rem;
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .logo {
+    justify-content: center;
+  }
+  .logo .logo__txt {
+    text-align: center;
+    margin-top: -1rem;
+  }
+}
+.navegacion {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .navegacion {
+    flex-direction: column;
+  }
+}
+.navegacion a {
+  color: var(--white);
+  text-decoration: none;
+  padding: 2rem;
+  text-align: center;
+}
+.navegacion a:hover {
+  color: var(--primary);
+}
+.navegacion a.active {
+  color: var(--primary);
+  border-bottom: solid 5px;
+  transition: border-bottom .2s ease;
+}
+@media (max-width: 768px) {
+  .navegacion {
+    padding-top: 2rem;
+  }
+  .navegacion a {
+    width: 13rem;
+  }
+  .navegacion a.active {
+    border-bottom: 0px;
+    border-left: solid 2px;
+    border-right: solid 2px;
+  }
+}
+.footer {
+  background-color: var(--primary-D);
+  color: var(--white);
+}
+.footer__info {
+  display: grid;
+  padding-top: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.footer__info--nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer__info--nav .navegacion a.active {
+  border-bottom: 0;
+}
+.footer__info .footer__info--logo {
+  width: 35rem;
+  filter: invert(1);
+}
+.footer__info .footer__info--social {
+  text-align: end;
+}

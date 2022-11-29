@@ -1,0 +1,16 @@
+/* app/styles/curso.css */
+.curso {
+  display: flex;
+  justify-content: flex-end;
+}
+.curso__info {
+  color: var(--white);
+  text-align: end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.curso__info .curso__info--titulo {
+  background-color: var(--primary-D);
+  color: var(--white);
+}

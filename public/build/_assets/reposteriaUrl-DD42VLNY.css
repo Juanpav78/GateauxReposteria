@@ -1,0 +1,8 @@
+/* app/styles/reposteriaUrl.css */
+.informacion {
+  display: flex;
+}
+.informacion .informacion__img {
+  width: 150rem;
+  height: 150rem;
+}

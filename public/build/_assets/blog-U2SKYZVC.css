@@ -1,0 +1,13 @@
+/* app/styles/blog.css */
+.link__blog {
+  text-decoration: none;
+}
+.blog__entrada {
+  display: flex;
+}
+.resumen {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}

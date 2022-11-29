@@ -1,0 +1,9 @@
+/* app/styles/blogUrl.css */
+.blogUrl__info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.blog__contenido {
+  text-align: justify;
+}

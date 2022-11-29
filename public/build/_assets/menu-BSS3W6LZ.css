@@ -1,0 +1,47 @@
+/* app/styles/menu.css */
+.menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 1200px) {
+  .menu {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .menu {
+    grid-template-columns: 1fr;
+  }
+}
+.reposteria__card {
+  background-color: var(--primary);
+}
+.reposteria__card--img {
+  width: 100%;
+  height: 24rem;
+  max-height: 25rem;
+}
+@media (max-width: 768px) {
+  .reposteria__card--img {
+    height: auto;
+  }
+}
+.reposteria__card--titulo {
+  padding: .5rem 1rem;
+  font-size: 3.6rem;
+  font-family: var(--fuente-resaltada);
+  height: 10rem;
+}
+.reposteria__card--precio {
+  font-size: 3.6rem;
+  text-align: end;
+}
+.reposteria__card--btn {
+  background-color: var(--primary-D);
+  text-decoration: none;
+  padding: 2rem;
+  text-align: center;
+  display: block;
+  color: var(--white);
+}

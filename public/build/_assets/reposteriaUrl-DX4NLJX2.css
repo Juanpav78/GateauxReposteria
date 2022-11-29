@@ -1,0 +1,45 @@
+/* app/styles/reposteriaUrl.css */
+.informacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.informacion .informacion__img {
+  max-width: 50rem;
+  height: 50rem;
+}
+.informacion .informacion__img img {
+  max-width: auto;
+  min-width: 40rem;
+  height: 50rem;
+}
+@media (max-width: 768px) {
+  .informacion {
+    flex-direction: column;
+  }
+  .informacion .informacion__img {
+    width: auto;
+  }
+  .informacion .informacion__img img {
+    height: auto;
+  }
+}
+.informacion .informacion__txt {
+  padding: 2rem;
+  max-width: 50rem;
+}
+.informacion .informacion__txt h3 {
+  font-size: 5rem;
+  font-family: var(--fuente-resaltada);
+}
+.informacion .informacion__txt p {
+  padding-right: 2rem;
+}
+.informacion .informacion__txt .precio {
+  color: var(--primary-D);
+  font-weight: 700;
+  text-align: end;
+  font-size: 5rem;
+  padding-top: 2rem;
+}
