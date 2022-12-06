@@ -27,7 +27,7 @@ const footer = () => {
                 className={location.pathname === '/nosotros' ? 'active' : ''}
                 >Nosotros</Link>
                 <Link
-                to={'/tienda'}
+                to={'/pasteles'}
                 className={location.pathname === '/tienda' ? 'active' : ''}
                 >Tienda</Link>
                 <Link

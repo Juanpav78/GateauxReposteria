@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import {
     Meta,
     Links,
@@ -51,9 +52,62 @@ export function links(){
 }
 
 export default function App(){
+    const carritoLS =typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('carrito'))?? [] : null
+    const [carrito, setCarrito]= useState(carritoLS )
+
+    useEffect(()=>{
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+    }, [carrito])
+
+    const agregarCarrito=(pastelSelect)=>{
+
+        if(carrito.some(reposteriaState => reposteriaState.id == pastelSelect.id)){
+            const carritoActualizado = carrito.map(
+                reposteriaState  =>{
+                    if(reposteriaState.id === pastelSelect.id){
+                        reposteriaState.cantidad =pastelSelect.cantidad
+                    }
+                    return reposteriaState 
+                    
+                }
+            )
+            setCarrito(carritoActualizado)
+        }else{
+            setCarrito([...carrito, pastelSelect])
+        }
+        
+    }
+
+    const actualizarCantidad = (reposteria)=>{
+
+        const carritoActualizado = carrito.map(
+            reposteriaState  =>{
+                if(reposteriaState.id === reposteria.id){
+                    reposteriaState.cantidad =reposteria.cantidad
+                }
+                return reposteriaState 
+                
+            }
+        )
+        setCarrito(carritoActualizado)
+    }
+
+    const eliminarReposteria = (id)=>{
+        const carritoActualizado = carrito.filter(
+            reposteriaState  => reposteriaState.id !== id
+        )
+        setCarrito(carritoActualizado)
+    }
     return(
         <Document> 
-            <Outlet />  
+            <Outlet 
+                context={{
+                    agregarCarrito,
+                    carrito,
+                    actualizarCantidad,
+                    eliminarReposteria
+                }}
+            /> 
         </Document>
         
     )
@@ -72,7 +126,7 @@ function Document({children}){
             {children}
             <Footer />
             <Scripts />
-            <LiveReload />
+            <LiveReload /> 
         </body>
         </html>
     )

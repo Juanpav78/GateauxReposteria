@@ -1,4 +1,4 @@
-import {  Outlet } from "@remix-run/react"
+import {  Outlet, useOutletContext } from "@remix-run/react"
 import styles from "~/styles/menu.css"
 import stylesListado from "~/styles/reposteriaUrl.css"
 
@@ -14,9 +14,12 @@ export function links(){
 }
 
 const tienda = () => {
+
   return (
     <main className="contenedor">
-        <Outlet />
+        <Outlet 
+          context={useOutletContext()}
+        />
     </main>
   )
 }

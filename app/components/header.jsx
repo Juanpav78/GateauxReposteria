@@ -1,4 +1,6 @@
 import { Link, useLocation } from "@remix-run/react"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome" 
+import {faShoppingCart} from "@fortawesome/free-solid-svg-icons"
 import Logo from "../img/Logo.svg"
 
 const Header = () => {
@@ -29,6 +31,10 @@ const Header = () => {
                 to={'/blog'}
                 className={location.pathname === '/blog' ? 'active' : ''}
                 >Blog</Link>
+                <Link
+                to={'/carrito'}
+                className={location.pathname === '/carrito' ? 'active' : ''}
+                ><FontAwesomeIcon icon={faShoppingCart} /></Link>
             </div>
         </div>
     </header>
