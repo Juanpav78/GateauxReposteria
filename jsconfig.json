@@ -1,16 +1,15 @@
 {
-  "include": ["**/*.js", "**/*.jsx"],
+  "include": ["**/*.js", "**/*.jsx", ".react-router/types/**/*"],
+  "exclude": ["node_modules", "build"],
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2019"],
-    "isolatedModules": true,
-    "esModuleInterop": true,
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "types": ["vite/client"],
     "jsx": "react-jsx",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "target": "ES2019",
-    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ES2022",
     "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
+    "checkJs": false,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"]

@@ -1,0 +1,128 @@
+/* HERO */
+
+.hero{
+  position: relative;
+  min-height: clamp(52rem, 75vh, 80rem);
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(to bottom, rgb(0 0 0 / .55), rgb(0 0 0 / .7)), url('/img/bg_panaderia.jpg');
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  overflow: hidden;
+}
+
+.hero__contenido{
+  text-align: center;
+  padding: 8rem 0;
+}
+
+.hero__subtitulo{
+  font-family: var(--fuente-resaltada);
+  font-size: 4.4rem;
+  color: var(--primary);
+}
+
+.hero__titulo{
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: clamp(4.2rem, 8vw, 8rem);
+  line-height: 1.1;
+  margin: 1rem auto 3rem;
+  max-width: 90rem;
+  perspective: 600px;
+}
+
+.hero__palabra{
+  display: inline-block;
+  margin: 0 .25em;
+  transform-origin: bottom;
+}
+
+.hero__texto{
+  max-width: 60rem;
+  margin: 0 auto 4rem;
+  font-size: 2.2rem;
+  color: rgb(255 255 255 / .9);
+}
+
+.hero__acciones{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.hero__scroll{
+  position: absolute;
+  left: 50%;
+  bottom: 3rem;
+  width: 2.6rem;
+  height: 4.2rem;
+  margin-left: -1.3rem;
+  border: 2px solid rgb(255 255 255 / .7);
+  border-radius: 2rem;
+}
+
+.hero__scroll::after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: .8rem;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background-color: var(--white);
+}
+
+/* BENEFICIOS */
+
+.beneficios{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+}
+
+.beneficio{
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  background-color: var(--gris);
+}
+
+.beneficio__ico{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 7rem;
+  height: 7rem;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--white);
+  font-size: 3rem;
+}
+
+.beneficio h3{
+  color: var(--primary-D);
+  margin-bottom: 1rem;
+}
+
+.beneficio p{
+  font-size: 1.8rem;
+}
+
+@media (max-width: 768px) {
+  .hero{
+    min-height: auto;
+  }
+  .hero__contenido{
+    padding: 6rem 0 10rem;
+  }
+  .beneficios{
+    grid-template-columns: 1fr;
+  }
+}

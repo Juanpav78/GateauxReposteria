@@ -1,25 +1,28 @@
-import { Link } from "@remix-run/react"
-import {formatearFecha }from '~/utils/utilidades.js'
+import { Link } from "react-router"
+import { motion } from "motion/react"
+import { formatearFecha } from '~/utils/utilidades'
+import { elementoLista } from "~/components/animaciones"
 
-const post = ({blogs}) => {
+const Post = ({ blog }) => {
+  const { titulo, resumen, miniatura, url, publishedAt } = blog
 
-    const{ titulo, contenido, imagen, url,publishedAt } = blogs
   return (
-    <Link className="link__blog sombra" to={`/blog/${url}`}>
-    <div className="blog__entrada">
-        <div className="blog__entrada--img">
-            <img className="" src={imagen.data.attributes.formats.medium.url} alt={`Imagen Comida Reposteria Pastel ${titulo}`} />
-        </div>
-        <div className="blog__entrada--info">
-            <h3>{titulo}</h3>   
+    <motion.div variants={elementoLista} whileHover={{ y: -6 }}>
+      <Link className="link__blog sombra" to={`/blog/${url}`}>
+        <article className="blog__entrada">
+          <div className="blog__entrada--img">
+            <img src={miniatura} alt={`Imagen Comida Reposteria Pastel ${titulo}`} loading="lazy" />
+          </div>
+          <div className="blog__entrada--info">
+            <h3>{titulo}</h3>
             <p className="fecha">{formatearFecha(publishedAt)}</p>
-
-            <p className="resumen">{contenido}</p>
-        </div>
-    </div>
-    
-    </Link>
+            <p className="resumen">{resumen}</p>
+            <span className="blog__leer">Leer más →</span>
+          </div>
+        </article>
+      </Link>
+    </motion.div>
   )
 }
 
-export default post
+export default Post

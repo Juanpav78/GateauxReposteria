@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Formularios</title>
+  </head>
+  <body>
+    <!-- Netlify detecta este formulario al desplegar. Debe tener los mismos campos que app/routes/contacto.jsx -->
+    <form name="contacto" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contacto" />
+      <input name="bot-field" />
+      <input name="nombre" type="text" />
+      <input name="email" type="email" />
+      <select name="asunto">
+        <option>Pedido especial</option>
+        <option>Cotización para evento</option>
+        <option>Curso de repostería</option>
+        <option>Otro</option>
+      </select>
+      <textarea name="mensaje"></textarea>
+    </form>
+  </body>
+</html>

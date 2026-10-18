@@ -4,6 +4,7 @@
     --black: #262626;
     --white: #FFF;
     --gris: rgb(240, 240, 240);
+    --whatsapp: #25D366;
     --fuente-principal: 'Sen', sans-serif;
     --fuente-titulo:'Fredericka the Great', cursive;
     --fuente-resaltada:'Sacramento', cursive;
@@ -11,22 +12,26 @@
   html {
     font-size: 62.5%;
     box-sizing: border-box;
+    scroll-behavior: smooth;
   }
-  
+
   *, *:before, *:after {
     box-sizing: inherit;
   }
-  
+
   body {
     font-size: 2rem;
     font-family: var(--fuente-principal);
     line-height: 1.5;
+    color: var(--black);
+    background-color: var(--white);
+    overflow-x: hidden;
   }
   img {
     max-width: 100%;
     height: auto;
   }
-  [class*="contenedor"], 
+  [class*="contenedor"],
   main {
     width: min(95%, 120rem);
     margin: 3rem auto;
@@ -47,17 +52,26 @@
     margin-top: 0;
   }
 
+  .oculto{
+    display: none;
+  }
+
+  .vacio{
+    text-align: center;
+  }
+
   .sombra{
     box-shadow: 0 0 3.5px 0px var(--black);
+    transition: box-shadow .2s ease-in;
 }
 .sombra:hover{
-    box-shadow: 0 0 5px 1px var(--black);
-    transition: all .2s ease-in;
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / .35);
 }
 
 .titulos{
   display: flex;
   align-items: center;
+  gap: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -69,7 +83,7 @@
   /* HEADER CSS */
 
 .header{
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.767), rgba(0, 0, 0, 0.795)),  url('../../public/img/bg_pasteleria.jpg');
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.767), rgba(0, 0, 0, 0.795)),  url('/img/bg_pasteleria.jpg');
   padding: 4.4rem 0;
   background-size: cover;
   background-position: center;
@@ -82,12 +96,7 @@
 .barra{
   display: flex;
   justify-content: space-between;
-}
-
-@media (max-width: 768px) {
-  .barra{
-    flex-direction: column;
-  }
+  align-items: center;
 }
 
 .logo{
@@ -112,25 +121,9 @@
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  .logo{
-  justify-content: center;
-  }
-  .logo .logo__txt{
-    text-align: center;
-    margin-top: -1rem;
-  }
-}
-
 .navegacion{
   display: flex;
   align-items: center;
-}
-
-@media (max-width: 768px) {
-  .navegacion{
-    flex-direction: column;
-  }
 }
 
 .navegacion a{
@@ -138,29 +131,116 @@
   text-decoration: none;
   padding: 2rem;
   text-align: center;
+  position: relative;
+  transition: color .2s ease;
 }
 
-.navegacion a:hover{
-  color: var(--primary);
-}
-
+.navegacion a:hover,
 .navegacion a.active{
   color: var(--primary);
-  border-bottom: solid 5px;
-  transition: border-bottom .2s ease;
+}
+
+.navegacion__indicador{
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  bottom: 1.2rem;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--primary);
+}
+
+.carrito__icono{
+  position: relative;
+  color: var(--white);
+  font-size: 2.6rem;
+  padding: 1.5rem;
+  margin-left: 1rem;
+  display: inline-flex;
+  transition: color .2s ease;
+}
+
+.carrito__icono:hover{
+  color: var(--primary);
+}
+
+.carrito__contador{
+  position: absolute;
+  top: .4rem;
+  right: 0;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  padding: 0 .5rem;
+  border-radius: 1.1rem;
+  background-color: var(--primary);
+  color: var(--white);
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrito__contador--numero{
+  display: inline-block;
+}
+
+.barra__movil{
+  display: none;
+  align-items: center;
+}
+
+.hamburguesa{
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 3rem;
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navegacion--movil{
+  display: none;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: rgb(0 0 0 / .5);
+  margin-top: 2rem;
+}
+
+.navegacion--movil a{
+  display: block;
+  font-size: 2.2rem;
+  border-bottom: 1px solid rgb(255 255 255 / .1);
+}
+
+.navegacion--movil a.active{
+  border-left: 4px solid var(--primary);
 }
 
 @media (max-width: 768px) {
-  .navegacion{
-    padding-top: 2rem;
+  .header{
+    padding: 2rem 0;
   }
-  .navegacion a{
-    width: 13rem;
+  .logo .logo__img{
+    width: 22rem;
   }
-  .navegacion a.active{
-    border-bottom:0px;
-    border-left: solid 2px;
-    border-right: solid 2px;
+  .logo .logo__txt{
+    font-size: 2.4rem;
+    margin-top: -1rem;
+  }
+  .navegacion--escritorio{
+    display: none;
+  }
+  .barra__movil{
+    display: flex;
+  }
+  .navegacion--movil{
+    display: flex;
   }
 }
 
@@ -179,8 +259,27 @@
   display: grid;
   padding-top: 2rem;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
 }
 
+.footer h4{
+  font-size: 2.2rem;
+  margin: 2rem 0 1rem;
+}
+
+.footer__info--contacto p{
+  font-size: 1.7rem;
+  margin-bottom: .8rem;
+}
+
+.footer__info--contacto svg{
+  width: 2rem;
+  color: var(--primary);
+}
+
+.footer a{
+  color: var(--white);
+}
 
 .footer__info--nav{
   display: flex;
@@ -188,8 +287,14 @@
   justify-content: center;
   align-items: center;
 }
-.footer__info--nav .navegacion a.active{
-  border-bottom: 0;
+
+.footer__info--nav .navegacion{
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer__info--nav .navegacion a{
+  padding: 1rem;
 }
 
 .footer__info .footer__info--logo{
@@ -197,7 +302,7 @@
   filter: invert(1);
 }
 
-.footer__info .footer__info--{
+.footer__info .footer__info--redes{
   text-align: center;
 }
 
@@ -207,7 +312,10 @@
   align-items: center;
 
   gap: 1rem;
-  
+}
+
+.footer__info .footer__info--social a{
+  display: inline-flex;
 }
 
 .footer__info .footer__info--social .ico{
@@ -223,25 +331,13 @@
 
 @media (max-width: 768px) {
   .footer__info{
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-  .footer__info .footer__info--social{
+    grid-template-columns: 1fr;
     text-align: center;
-    grid-column: 2;
-    grid-row: 1;
   }
-  .footer__info .footer__info--contacto{
-    text-align: justify;
-    grid-column: 1;
-    grid-row: 1;
+  .footer__info .footer__info--logo{
+    width: 25rem;
   }
-  .footer__info .footer__info--nav{
-    padding-top: 3rem;
-    grid-column: 1 / 3;
-    grid-row: 2;
-  }
-} 
+}
 
   /* ERROR CSS */
 
@@ -263,8 +359,9 @@
   color: var(--white);
   padding: 2rem;
   display: block;
-  width: 36rem;
+  max-width: 36rem;
   margin: 3rem auto;
+  border-radius: 10px;
 }
 
 /* BTN CSS */
@@ -272,13 +369,17 @@
   background-color: var(--primary-D);
   color: var(--white);
   padding: 2rem;
-  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: inherit;
   font-weight: bold;
   text-align:center;
   text-transform: uppercase;
+  cursor: pointer;
   display: block;
+  flex-shrink: 0;
   width: 15rem;
-  height: 7rem;
 }
 
 .btnVolver:hover ,.btnVer:hover {
@@ -289,6 +390,9 @@
 @media (max-width: 768px) {
   .btnVolver{
     width: 100%;
+  }
+  .titulos .heading{
+    margin: 2rem auto;
   }
 }
 
@@ -301,7 +405,216 @@
   padding: 2rem;
   text-align: center;
   font-weight: 900;
-  margin-top: 2rem;
+  margin-top: 4rem;
   border-radius: 10px;
 }
 
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.6rem 3rem;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.btn:disabled{
+  opacity: .7;
+  cursor: wait;
+}
+
+.btn--primario{
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.btn--primario:hover{
+  background-color: var(--primary-D);
+}
+
+.btn--secundario{
+  background-color: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+
+.btn--secundario:hover{
+  background-color: var(--white);
+  color: var(--primary-D);
+}
+
+.btn--whatsapp{
+  background-color: var(--whatsapp);
+  color: var(--white);
+}
+
+.btn--whatsapp:hover{
+  background-color: #1da851;
+}
+
+.btn--ok{
+  background-color: #4a8f5c;
+}
+
+.btn--bloque{
+  display: flex;
+  width: 100%;
+}
+
+/* FORMULARIOS */
+
+.campo{
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  margin-bottom: 2rem;
+}
+
+.campo label{
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: var(--primary-D);
+}
+
+.campo input,
+.campo select,
+.campo textarea{
+  font-family: inherit;
+  font-size: 1.8rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid #d6cbc3;
+  border-radius: 8px;
+  background-color: var(--white);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus{
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgb(163 124 98 / .25);
+}
+
+/* SELECTOR DE CANTIDAD */
+
+.cantidad{
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d6cbc3;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--white);
+}
+
+.cantidad button{
+  width: 4.4rem;
+  height: 4.4rem;
+  border: none;
+  background-color: var(--gris);
+  color: var(--primary-D);
+  cursor: pointer;
+  font-size: 1.6rem;
+  transition: background-color .2s ease;
+}
+
+.cantidad button:hover:not(:disabled){
+  background-color: #e2d8d1;
+}
+
+.cantidad button:disabled{
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.cantidad__valor{
+  min-width: 4.4rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* WHATSAPP FLOTANTE Y AVISO */
+
+.whatsapp__flotante{
+  position: fixed;
+  right: 2.4rem;
+  bottom: 2.4rem;
+  z-index: 50;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background-color: var(--whatsapp);
+  color: var(--white);
+  font-size: 3.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgb(0 0 0 / .3);
+}
+
+.whatsapp__flotante::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: var(--whatsapp);
+  z-index: -1;
+  animation: pulso 2.4s ease-out infinite;
+}
+
+@keyframes pulso{
+  0% { transform: scale(1); opacity: .6; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+.aviso{
+  position: fixed;
+  left: 50%;
+  bottom: 2.4rem;
+  z-index: 60;
+  translate: -50% 0;
+  width: max-content;
+  max-width: calc(100% - 4rem);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.4rem 2rem;
+  border-radius: 12px;
+  background-color: var(--primary-D);
+  color: var(--white);
+  font-size: 1.7rem;
+  box-shadow: 0 10px 30px rgb(0 0 0 / .3);
+}
+
+.aviso__ico{
+  color: var(--whatsapp);
+}
+
+.aviso__enlace{
+  color: var(--primary);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .aviso{
+    bottom: 10rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html{
+    scroll-behavior: auto;
+  }
+  .whatsapp__flotante::before{
+    animation: none;
+  }
+}
