@@ -1,15 +1,6 @@
-import { Outlet } from "@remix-run/react"
-import styles from "~/styles/blog.css"
+import { Outlet } from "react-router"
 
-export function links(){
-  return[{
-      rel: 'stylesheet',
-      href: styles
-  }]
-
-}
-
-const blog = () => {
+const Blog = () => {
   return (
     <main className="contenedor">
       <Outlet />
@@ -17,4 +8,4 @@ const blog = () => {
   )
 }
 
-export default blog
+export default Blog

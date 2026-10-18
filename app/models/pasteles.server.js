@@ -1,29 +1,28 @@
-export async function getResposterias(){
-    const respuesta = await fetch(`${process.env.API_URL}/pasteles?populate=imagen`)
-    const res = await respuesta.json()
-    return res;
+import { pasteles } from "~/data/pasteles"
+import { blogs } from "~/data/blogs"
+import { curso } from "~/data/curso"
+
+/**
+ * Los datos ahora viven en app/data. Las funciones siguen siendo async
+ * para poder volver a conectar una API (Strapi u otra) sin tocar las rutas.
+ */
+
+export async function getReposterias() {
+    return pasteles
 }
 
-export async function getResposteria(url){
-    const respuesta = await fetch(`${process.env.API_URL}/pasteles?filters[url]=${url}&populate=imagen`)
-    const res = await respuesta.json()
-    return res;
+export async function getReposteria(url) {
+    return pasteles.find(pastel => pastel.url === url) ?? null
 }
 
-export async function getBlogs(){
-    const respuesta = await fetch(`${process.env.API_URL}/blogs?populate=imagen`)
-    const res = await respuesta.json()
-    return res;
+export async function getBlogs() {
+    return [...blogs].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
 }
 
-export async function getBlog(url){
-    const respuesta = await fetch(`${process.env.API_URL}/blogs?filters[url]=${url}&populate=imagen`)
-    const res = await respuesta.json()
-    return res;
+export async function getBlog(url) {
+    return blogs.find(blog => blog.url === url) ?? null
 }
 
-export async function getCurso(){
-    const respuesta = await fetch(`${process.env.API_URL}/curso?populate=imagen`)
-    const res = await respuesta.json()
-    return res;
+export async function getCurso() {
+    return curso
 }

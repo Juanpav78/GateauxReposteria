@@ -3,15 +3,24 @@
     justify-content: center;
     flex-direction: column;
     gap: 2.4rem;
-    
+    max-width: 90rem;
+    margin: 0 auto;
 }
 
 .blogUrl__img{
     width: 100%;
     height: 50rem;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
-.blog__contenido{
+@media (max-width: 768px) {
+    .blogUrl__img{
+        height: 28rem;
+    }
+}
+
+.blogUrl__contenido{
     text-align: justify;
 }
 

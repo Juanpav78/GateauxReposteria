@@ -1,24 +1,11 @@
-import {  Outlet } from "@remix-run/react"
-import styles from "~/styles/menu.css"
-import stylesListado from "~/styles/reposteriaUrl.css"
+import { Outlet } from "react-router"
 
-export function links(){
-    return[{
-        rel: 'stylesheet',
-        href: styles
-    },{
-        rel: 'stylesheet',
-        href: stylesListado
-    }]
- 
-}
-
-const tienda = () => {
+const Tienda = () => {
   return (
     <main className="contenedor">
-        <Outlet />
+      <Outlet />
     </main>
   )
 }
 
-export default tienda
+export default Tienda

@@ -1,81 +1,56 @@
-import {useLoaderData, Link} from '@remix-run/react'
-import {getResposterias, getBlogs, getCurso} from '~/models/pasteles.server'
-import ListadoReposteria from '~/components/listadoReposteria.jsx'
-
-import stylesCurso from "~/styles/curso.css"
-import stylesMenu from "~/styles/menu.css"
-import stylesBlogs from "~/styles/blog.css"
-import styles from "~/styles/inicio.css"
-
+import { useLoaderData, Link } from 'react-router'
+import { getReposterias, getBlogs, getCurso } from '~/models/pasteles.server'
+import ListadoReposteria from '~/components/listadoReposteria'
 import Curso from "~/components/curso"
 import ListadoBlogs from "~/components/listadoBlogs"
 import Home from "~/components/home"
+import { Revelar } from '~/components/animaciones'
 
-export function meta(){
-
+export function meta() {
+  return [
+    { title: 'Gateaux - Repostería casera' },
+    { name: 'description', content: 'Tortas, postres y panadería artesanal hechos en casa. Pide en línea o por WhatsApp.' }
+  ]
 }
 
-export function links(){
-  return[{
-    rel: 'stylesheet',
-    href: stylesMenu
-  },{
-    rel: 'stylesheet',
-    href: stylesBlogs
-  },{
-    rel: 'stylesheet',
-    href: stylesCurso
-  },{
-    rel: 'stylesheet',
-    href: styles
-  }]
-}
-
-export async function loader(){
-  const [ reposterias , blogs, curso ] = await Promise.all([
-    getResposterias(),
+export async function loader() {
+  const [reposterias, blogs, curso] = await Promise.all([
+    getReposterias(),
     getBlogs(),
     getCurso()
   ])
 
-  return {
-    reposterias: reposterias.data,
-    blogs: blogs.data,
-    curso: curso.data
-  }
-
-
+  return { reposterias, blogs, curso }
 }
+
 const Index = () => {
-  const {reposterias, blogs, curso} = useLoaderData()
+  const { reposterias, blogs, curso } = useLoaderData()
   return (
     <>
-        <section className='contenedor'>
-          <Home />
-        </section>
+      <Home />
 
-        <main >
-        <ListadoReposteria 
-        reposterias = {reposterias}
-        limit= {3}
+      <main>
+        <ListadoReposteria
+          reposterias={reposterias}
+          limit={6}
+          titulo="Los favoritos"
         />
+        <Revelar>
+          <Link to="/pasteles" className='btnVer'>Ver todos nuestros productos</Link>
+        </Revelar>
+      </main>
 
-        <Link to="/pasteles" className='btnVer'>Ver todos nuestros productos</Link>
-        </main>
+      <Curso curso={curso} />
 
-        <section>
-          <Curso 
-          curso ={curso}
-          />
-        </section>
-
-        <section className='contenedor'>
-          <ListadoBlogs 
-           blogs = { blogs}
-           limit= {4}
-          />
-          <Link to="/pasteles" className='btnVer'>Ver nuestros blogs</Link>
-        </section>
+      <section className='contenedor'>
+        <ListadoBlogs
+          blogs={blogs}
+          limit={4}
+        />
+        <Revelar>
+          <Link to="/blog" className='btnVer'>Ver nuestros blogs</Link>
+        </Revelar>
+      </section>
     </>
   )
 }

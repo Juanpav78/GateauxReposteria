@@ -1,6 +1,10 @@
 .curso{
     display: flex;
     justify-content: flex-end;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 6rem 0;
 }
 
 .curso__info{
@@ -10,21 +14,30 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    padding: 5rem 0;
+    gap: 3rem;
+    padding: 8rem 0;
+    max-width: 60rem;
+    margin-left: auto;
 }
 
 .curso__info .curso__info--titulo{
-
-    text-align: center;
+    text-align: end;
     font-family: var(--fuente-titulo);
-    font-size: 7rem;
-    line-height: 7rem;
-    margin-bottom: 4rem;
+    font-weight: 400;
+    font-size: 6rem;
+    line-height: 1.1;
 }
 
-
 @media (max-width: 768px) {
+    .curso{
+        background-attachment: scroll;
+    }
     .curso__info{
-      text-align: justify;
+      text-align: center;
+      align-items: center;
+    }
+    .curso__info .curso__info--titulo{
+        text-align: center;
+        font-size: 4.6rem;
     }
   }
